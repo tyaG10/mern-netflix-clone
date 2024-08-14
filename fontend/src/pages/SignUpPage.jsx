@@ -9,7 +9,7 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const {signup} = useAuthStore();
+  const {signup, isSigningUp} = useAuthStore();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -42,8 +42,8 @@ const SignUpPage = () => {
               <input type="password" className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring" placeholder="**********" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
 
-            <button className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
-              Sign Up
+            <button disabled={isSigningUp} className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
+              {isSigningUp ? "Loading..." : "Sign Up"}
             </button>
           </form>
 
